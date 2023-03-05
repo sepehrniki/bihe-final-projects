@@ -29,4 +29,18 @@ Route::prefix('v1')->group(function () {
         Route::get('/show/{id}', 'show')
             ->name('show');
     });
+
+    Route::prefix('/project')->name('project.')->controller(ProjectController::class)->middleware('auth:sanctum')->group(function () {
+        Route::post('/create', 'create')
+            ->name('create');
+
+        Route::post('/edit', 'edit')
+            ->name('edit');
+
+        Route::delete('/delete/{id}', 'delete')
+            ->name('delete');
+
+        Route::get('/show/{id}', 'show')
+            ->name('show');
+    });
 });
