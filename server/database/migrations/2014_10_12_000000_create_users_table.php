@@ -16,7 +16,6 @@ return new class extends Migration
             // 0 = user, 1 = admin
             $table->unsignedtinyInteger('type')->default(0);
             $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
