@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Task extends Model
 {
     protected $fillable = [
+        'project_id',
+        'created_by',
         'title',
         'description',
-        'created_by',
+        'status',
     ];
 
     protected $casts = [

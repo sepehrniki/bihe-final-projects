@@ -4,16 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class TaskLog extends Model
 {
+    const UPDATED_AT = null;
+
     protected $fillable = [
-        'title',
-        'description',
-        'created_by',
+        'task_id',
+        'changed_by',
+        'old_status',
+        'new_status',
     ];
 
     protected $casts = [
         'created_at' => 'date:Y-m-d H:i:s',
-        'updated_at' => 'date:Y-m-d H:i:s',
     ];
 }

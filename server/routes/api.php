@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,5 +49,25 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/list', 'list')
             ->name('list');
+    });
+
+    Route::prefix('/task')->name('project.')->controller(TaskController::class)->middleware('auth:sanctum')->group(function () {
+        Route::post('/create', 'create')
+            ->name('create');
+
+        Route::post('/edit', 'edit')
+            ->name('edit');
+
+        Route::delete('/delete/{id}', 'delete')
+            ->name('delete');
+
+        Route::get('/show/{id}', 'show')
+            ->name('show');
+
+        Route::get('/list/', 'list')
+            ->name('list');
+
+        Route::get('/{id}/logs', 'logs')
+            ->name('logs');
     });
 });

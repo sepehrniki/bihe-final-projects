@@ -302,12 +302,12 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "app",
+									"value": "develop app",
 									"type": "default"
 								},
 								{
 									"key": "description",
-									"value": "my app is best",
+									"value": "develop app for nasa",
 									"type": "default"
 								}
 							]
@@ -387,7 +387,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/{{V}}/project/delete/3",
+							"raw": "{{BASE_URL}}/{{V}}/project/delete/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -395,7 +395,7 @@
 								"{{V}}",
 								"project",
 								"delete",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -459,6 +459,210 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "task",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "project_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "title",
+									"value": "create UI/UX",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "User interface design For NASA app",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/{{V}}/task/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"{{V}}",
+								"task",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "status",
+									"value": "InProgress",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/{{V}}/task/edit",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"{{V}}",
+								"task",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/{{V}}/task/delete/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"{{V}}",
+								"task",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/{{V}}/task/show/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"{{V}}",
+								"task",
+								"show",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/{{V}}/task/1/logs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"{{V}}",
+								"task",
+								"1",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/{{V}}/task/list/2?page=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"{{V}}",
+								"task",
+								"list",
+								"2"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -466,7 +670,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "Bearer 2|2JuKBzOO3gzfZgKU1u7D56eoONJcTwuYKYQsVhh6",
+				"value": "Bearer 1|aqP9cpjhyJOaL32MVluI5exY8PRxYXpi1xvCkN7F",
 				"type": "string"
 			}
 		]

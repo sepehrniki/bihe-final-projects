@@ -5,3 +5,4 @@
 
 500 = Access Denied - دسترسی ممنوع شد
 501 = Unauthenticated - احراز هویت نشده
+502 = Changing to this status is not allowed - تغییر به این وضعیت مجاز نیست
