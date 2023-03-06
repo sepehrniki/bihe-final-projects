@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Api;
-use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -111,8 +110,28 @@ class UserController extends Controller
         if ($request->user()->tokenCan('type-admin')) {
             $user = User::where('id', $id)->first();
 
+            if ($user) {
+                return $this->SuccessResponse([
+                    'user' => $user,
+                ]);
+            }
+            else {
+                return $this->FailedResponse(103);
+            }
+        }
+        else {
+            return $this->FailedResponse(500);
+        }
+    }
+
+    public function list(Request $request)
+    {
+        if ($request->user()->tokenCan('type-admin')) {
+            $users = User::simplePaginate(20);
+
             return $this->SuccessResponse([
-                'user' => $user,
+                'count' => User::count(),
+                'users' => $users,
             ]);
         }
         else {

@@ -28,6 +28,9 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/show/{id}', 'show')
             ->name('show');
+
+        Route::get('/list', 'list')
+            ->name('list');
     });
 
     Route::prefix('/project')->name('project.')->controller(ProjectController::class)->middleware('auth:sanctum')->group(function () {
@@ -42,5 +45,8 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/show/{id}', 'show')
             ->name('show');
+
+        Route::get('/list', 'list')
+            ->name('list');
     });
 });

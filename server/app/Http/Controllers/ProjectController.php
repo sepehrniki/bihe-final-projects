@@ -64,19 +64,39 @@ class ProjectController extends Controller
 
     public function delete(Request $request)
     {
-        $deleted = Project::where('id', $request->id)->delete();
+        if ($request->user()->tokenCan('type-admin')) {
+            $deleted = Project::where('id', $request->id)->delete();
 
-        return $this->SuccessResponse([
-            'deleted' => (bool)$deleted
-        ]);
+            return $this->SuccessResponse([
+                'deleted' => (bool)$deleted
+            ]);
+        }
+        else {
+            return $this->FailedResponse(500);
+        }
     }
 
     public function show($id)
     {
         $project = Project::where('id', $id)->first();
 
+        if ($project) {
+            return $this->SuccessResponse([
+                'project' => $project,
+            ]);
+        }
+        else {
+            return $this->FailedResponse(103);
+        }
+    }
+
+    public function list()
+    {
+        $projects = Project::simplePaginate(20);
+
         return $this->SuccessResponse([
-            'project' => $project,
+            'count' => Project::count(),
+            'projects' => $projects,
         ]);
     }
 }

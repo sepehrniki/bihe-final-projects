@@ -1,6 +1,7 @@
 100 = Error in input data format - خطا در فرمت داده های ورودی
 101 = User with this username was not found - کاربر با این نام کاربری یافت نشد
 102 = The password entered is incorrect - رمز عبور وارد شده اشتباه است
+103 = No record found - رکوردی یافت نشد
 
 500 = Access Denied - دسترسی ممنوع شد
 501 = Unauthenticated - احراز هویت نشده
