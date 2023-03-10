@@ -140,7 +140,7 @@
 				{
 					"name": "edit",
 					"request": {
-						"method": "POST",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
@@ -149,46 +149,42 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "id",
-									"value": "1",
-									"type": "default"
-								},
+							"mode": "urlencoded",
+							"urlencoded": [
 								{
 									"key": "firstname",
 									"value": "main",
-									"type": "default"
+									"type": "text"
 								},
 								{
 									"key": "lastname",
 									"value": "admin",
-									"type": "default"
+									"type": "text"
 								},
 								{
 									"key": "username",
 									"value": "mmd",
-									"type": "default",
+									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "123456789",
-									"type": "default",
+									"type": "text",
 									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/{{V}}/user/edit",
+							"raw": "{{BASE_URL}}/{{V}}/user/edit/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"{{V}}",
 								"user",
-								"edit"
+								"edit",
+								"1"
 							]
 						}
 					},
@@ -329,7 +325,7 @@
 				{
 					"name": "edit",
 					"request": {
-						"method": "POST",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
@@ -338,34 +334,30 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "id",
-									"value": "1",
-									"type": "default"
-								},
+							"mode": "urlencoded",
+							"urlencoded": [
 								{
 									"key": "title",
 									"value": "my prj",
-									"type": "default"
+									"type": "text"
 								},
 								{
 									"key": "description",
 									"value": "my prj is best",
-									"type": "default"
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/{{V}}/project/edit",
+							"raw": "{{BASE_URL}}/{{V}}/project/edit/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"{{V}}",
 								"project",
-								"edit"
+								"edit",
+								"1"
 							]
 						}
 					},
@@ -511,7 +503,7 @@
 				{
 					"name": "edit",
 					"request": {
-						"method": "POST",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
@@ -523,11 +515,6 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "id",
-									"value": "1",
-									"type": "default"
-								},
-								{
 									"key": "status",
 									"value": "InProgress",
 									"type": "default"
@@ -535,14 +522,15 @@
 							]
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/{{V}}/task/edit",
+							"raw": "{{BASE_URL}}/{{V}}/task/edit/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"{{V}}",
 								"task",
-								"edit"
+								"edit",
+								"1"
 							]
 						}
 					},
@@ -670,7 +658,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "Bearer 1|aqP9cpjhyJOaL32MVluI5exY8PRxYXpi1xvCkN7F",
+				"value": "Bearer 1|2GWgdL2w3deOUZc2AURFwlK0vvaMehd0UGFrDtas",
 				"type": "string"
 			}
 		]

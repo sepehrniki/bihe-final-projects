@@ -21,7 +21,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/create', 'create')
             ->name('create');
 
-        Route::post('/edit', 'edit')
+        Route::patch('/edit/{id}', 'edit')
             ->name('edit');
 
         Route::delete('/delete/{id}', 'delete')
@@ -38,7 +38,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/create', 'create')
             ->name('create');
 
-        Route::post('/edit', 'edit')
+        Route::patch('/edit/{id}', 'edit')
             ->name('edit');
 
         Route::delete('/delete/{id}', 'delete')
@@ -55,7 +55,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/create', 'create')
             ->name('create');
 
-        Route::post('/edit', 'edit')
+        Route::patch('/edit/{id}', 'edit')
             ->name('edit');
 
         Route::delete('/delete/{id}', 'delete')
@@ -64,7 +64,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/show/{id}', 'show')
             ->name('show');
 
-        Route::get('/list/', 'list')
+        Route::get('/list/{project_id}', 'list')
             ->name('list');
 
         Route::get('/{id}/logs', 'logs')

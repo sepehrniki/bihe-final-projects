@@ -37,10 +37,9 @@ class TaskController extends Controller
         ]);
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
-            'id' => ['required', 'exists:App\Models\Task,id'],
             'title' => ['string', 'unique:App\Models\Task,title'],
             'description' => ['string'],
             'status' => ['in:ToDo,Blocked,InProgress,InQA,Done,Deployed'],
@@ -50,7 +49,11 @@ class TaskController extends Controller
             return $this->FailedResponse(100, $validate->errors());
         }
 
-        $task = Task::find($request->id);
+        $task = Task::find($id);
+
+        if (!$task) {
+            return $this->FailedResponse(103);
+        }
 
         if ($request->title)
             $task->title = $request->title;
@@ -131,6 +134,12 @@ class TaskController extends Controller
 
     public function list($project_id)
     {
+        $count = Task::where('project_id', $project_id)->count();
+
+        if ($count == 0) {
+            return $this->FailedResponse(103);
+        }
+
         $task = Task::where('project_id', $project_id)->simplePaginate(20);
 
         return $this->SuccessResponse([
