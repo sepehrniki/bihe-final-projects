@@ -46,11 +46,10 @@ class UserController extends Controller
         }
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
         if ($request->user()->tokenCan('type-admin')) {
             $validate = Validator::make($request->all(), [
-                'id' => ['required', 'exists:App\Models\User,id'],
                 'firstname' => ['string'],
                 'lastname' => ['string'],
                 'username' => ['string', 'unique:App\Models\User,username'],
@@ -62,7 +61,11 @@ class UserController extends Controller
                 return $this->FailedResponse(100, $validate->errors());
             }
 
-            $user = User::find($request->id);
+            $user = User::find($id);
+
+            if (!$user) {
+                return $this->FailedResponse(103);
+            }
 
             if ($request->firstname)
                 $user->firstname = $request->firstname;
@@ -79,10 +82,10 @@ class UserController extends Controller
             if ($request->type)
                 $user->type = $request->type;
 
-            $user = $user->save();
+            $updated = $user->save();
 
             return $this->SuccessResponse([
-                'updated' => true,
+                'updated' => $updated,
                 'user' => $user
             ]);
         }

@@ -34,10 +34,9 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
-            'id' => ['required', 'exists:App\Models\Project,id'],
             'title' => ['string', 'unique:App\Models\Project,title', 'required_without:description'],
             'description' => ['string', 'required_without:title']
         ]);
@@ -46,7 +45,11 @@ class ProjectController extends Controller
             return $this->FailedResponse(100, $validate->errors());
         }
 
-        $project = Project::find($request->id);
+        $project = Project::find($id);
+
+        if (!$project) {
+            return $this->FailedResponse(103);
+        }
 
         if ($request->title)
             $project->title = $request->title;
@@ -54,10 +57,10 @@ class ProjectController extends Controller
         if ($request->description)
             $project->description = $request->description;
 
-        $project = $project->save();
+        $updated = $project->save();
 
         return $this->SuccessResponse([
-            'updated' => true,
+            'updated' => $updated,
             'project' => $project,
         ]);
     }
